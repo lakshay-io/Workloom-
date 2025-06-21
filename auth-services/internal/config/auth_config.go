@@ -4,7 +4,18 @@ import (
 	"log"
 	"os"
 	"github.com/joho/godotenv"
+	"golang.org/x/oauth2"
+    "golang.org/x/oauth2/google"
 )
+
+
+var GoogleOauthConfig = &oauth2.Config{
+    RedirectURL:  "",
+    ClientID:     "",
+    ClientSecret: "",
+    Scopes:       []string{"https://www.googleapis.com/auth/userinfo.email", "https://www.googleapis.com/auth/userinfo.profile"},
+    Endpoint:     google.Endpoint,
+}
 
 func LoadEnv() {
 	err := godotenv.Load()

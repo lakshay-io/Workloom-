@@ -8,8 +8,11 @@ import (
 func SetupRoutes(r *gin.Engine) {
 	authGroup := r.Group("/auth")
 	{
-		authGroup.POST("google/login", handler.Login)
-		authGroup.POST("/register", handler.Register)
-		authGroup.GET("/validate", handler.Validate)
+		authGroup.GET("google/login", handler.GoogleLogin)
+		authGroup.GET("google/callback", handler.GoogleAuthCallback)
+		authGroup.POST("user/register", handler.Register)
+		authGroup.POST("user/login", handler.Login)
+		authGroup.POST("user/logout", handler.LogOut)
+		authGroup.GET("user/validate", handler.Validate)
 	}
 }
